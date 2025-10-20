@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import './App.css';
+import { hover } from '@testing-library/user-event/dist/hover';
 
 
 const App  = () => {
@@ -37,15 +38,15 @@ const App  = () => {
 
     <div className="row">
     <button className="button" onClick={handleClear}>C</button>
-    <button className="button" onClick={() => (handleClick("%"))}>%</button>
-    <button className="button" disabled>:)</button>
-    <button className="button"  disabled>:(</button>
+    <button className="button" onClick={handleEqual }>=</button>
+    
+   
     </div>
     <div className="row">
     <button className="button" onClick={() => (handleClick("7"))}>7</button>
     <button className="button" onClick={() => (handleClick("8"))}>8</button>
     <button className="button" onClick={() => (handleClick("9"))}>9</button>
-    <button className="button" onClick={() => (handleClick("*"))}>*</button>
+    <button className="button" onClick={() => (handleClick("/"))}>/</button>
     </div>
     <div className="row">
     <button className="button" onClick={() => (handleClick("4"))}>4</button>
@@ -60,10 +61,9 @@ const App  = () => {
     <button className="button" onClick={() => (handleClick("+"))}>+</button>
     </div>
     <div className="row">
-    <button className="button" onClick={() => (handleClick("/"))}>/</button>
-    <button className="button" onClick={() => (handleClick("0"))}>0</button>
     <button className="button" onClick={() => (handleClick("."))}>.</button>
-    <button className="button" onClick={handleEqual}>=</button>
+    <button className="button" onClick={() => (handleClick("0"))}>0</button>
+    <button className="button" onClick={() => (handleClick("*"))}>*</button>
     </div>
       </div>
       </div>
