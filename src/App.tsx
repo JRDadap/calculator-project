@@ -1,69 +1,66 @@
 import React, { useState } from 'react';
 import './App.css';
-import { hover } from '@testing-library/user-event/dist/hover';
-
+import CustomButton from './CustomButton';
 
 const App  = () => {
-    const [addition, setAddition] = useState("")
+    const [equation, setEquation] = useState("")
     
-    const handleClick = (value: string) => {
+    const handleClick = (value: number | string) => {
       const operator = ['+', '-', '*', '/'];
-      if (operator.includes(value)) {
-        if (addition === "") return;
+      if (typeof value === 'string' && operator.includes(value)) {
+        if (equation === "") return;
 
-        const lastChar = addition [addition.length -1];
+        const lastChar = equation [equation.length -1];
         if(operator.includes(lastChar)) return;
       }
-      setAddition((prev) => prev + value);
+      setEquation((prev) => prev + value);
 
     };
 
     const handleEqual = () => {
       try {
-        const result = eval(addition.replace(/x/g, '*'));
-        setAddition(String(result));
+        const result = eval(equation.replace(/x/g, '*'));
+        setEquation(String(result));
       } catch (error) {
-        setAddition("Error");
+        setEquation("Error");
       }
     };
     const handleClear = () => {
-  setAddition("");
+  setEquation("");
 };
 
     return(
      <div className="App">
-    <div className="calc-wrapper">
-    <input type="text" value={addition} placeholder="
-     Enter number" readOnly />
+      <div className="calc-wrapper">
+      <input type="text" value={equation} placeholder="
+        Enter number" readOnly />
 
     <div className="row">
-    <button className="button" onClick={handleClear}>C</button>
-    <button className="button" onClick={handleEqual }>=</button>
-    
-   
+      <CustomButton onClick={handleClear} value={"C"} />
+      <CustomButton onClick={handleEqual} value={"="} />
     </div>
     <div className="row">
-    <button className="button" onClick={() => (handleClick("7"))}>7</button>
-    <button className="button" onClick={() => (handleClick("8"))}>8</button>
-    <button className="button" onClick={() => (handleClick("9"))}>9</button>
-    <button className="button" onClick={() => (handleClick("/"))}>/</button>
+        <CustomButton onClick={handleClick} value={7} />
+        <CustomButton onClick={handleClick} value={8}  />
+        <CustomButton onClick={handleClick} value={9} />
+        <CustomButton onClick={handleClick} value={"/"} />
     </div>
     <div className="row">
-    <button className="button" onClick={() => (handleClick("4"))}>4</button>
-    <button className="button" onClick={() => (handleClick("5"))}>5</button>
-    <button className="button" onClick={() => (handleClick("6"))}>6</button>
-    <button className="button" onClick={() => (handleClick("-"))}>-</button>
+        <CustomButton onClick={handleClick} value={4} />
+        <CustomButton onClick={handleClick} value={5} />
+        <CustomButton onClick={handleClick} value={6} />
+        <CustomButton onClick={handleClick} value={"-"} />
     </div>
      <div className="row">
-    <button className="button" onClick={() => (handleClick("1"))}>1</button>
-    <button className="button" onClick={() => (handleClick("2"))}>2</button>
-    <button className="button" onClick={() => (handleClick("3"))}>3</button>
-    <button className="button" onClick={() => (handleClick("+"))}>+</button>
+        <CustomButton onClick={handleClick} value={1} />
+        <CustomButton onClick={handleClick} value={2} />
+        <CustomButton onClick={handleClick} value={3} />
+        <CustomButton onClick={handleClick} value={"+"} />
     </div>
     <div className="row">
-    <button className="button" onClick={() => (handleClick("."))}>.</button>
-    <button className="button" onClick={() => (handleClick("0"))}>0</button>
-    <button className="button" onClick={() => (handleClick("*"))}>*</button>
+        <CustomButton onClick={handleClick} value={"."} />
+        <CustomButton onClick={handleClick} value={0} />
+        <CustomButton onClick={handleClick} value={"*"} />
     </div>
       </div>
       </div>
