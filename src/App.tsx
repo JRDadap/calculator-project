@@ -58,7 +58,7 @@ const App  = () => {
         <CustomButton onClick={handleClick} value={"+"} />
     </div>
     <div className="row">
-        <CustomButton onClick={handleClick} value={"."} />
+        <CustomButton onClick={handleClick} value={"2"} />
         <CustomButton onClick={handleClick} value={0} />
         <CustomButton onClick={handleClick} value={"*"} />
     </div>
